@@ -195,7 +195,7 @@
             position: absolute;
             top: 14px;
             left: 14px;
-            background: rgba(8, 10, 15, 0.8);
+            background: rgba(8, 10, 15, 0.85);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: #fff;
@@ -340,11 +340,28 @@
 
         <div class="grid">
             
-            <!-- TARJETA 1: SILUETA OPEL ASTRA (TU FOTO REAL) -->
+            <!-- TARJETA 1: SILUETA OPEL ASTRA -->
             <div class="card">
                 <div class="card-img-container">
                     <span class="badge-category" style="color: #a855f7;">🚗 Motor & Deco</span>
-                    <img src="img/silueta-opel.jpg" alt="Silueta Opel Astra ST 3D">
+                    <!-- BÚSQUEDA AUTOMÁTICA DE LA FOTO EN CUALQUIER RUTA -->
+                    <img src="img/silueta-opel.jpg" 
+                         alt="Silueta Opel Astra ST 3D"
+                         onerror="
+                           if (!this.dataset.step) {
+                             this.dataset.step = '1';
+                             this.src = 'imagen/silueta-opel.jpg';
+                           } else if (this.dataset.step === '1') {
+                             this.dataset.step = '2';
+                             this.src = 'silueta-opel.jpg';
+                           } else if (this.dataset.step === '2') {
+                             this.dataset.step = '3';
+                             this.src = 'img/silueta-opel.jfif';
+                           } else if (this.dataset.step === '3') {
+                             this.dataset.step = '4';
+                             this.src = 'imagen/silueta-opel.jfif';
+                           }
+                         ">
                 </div>
                 <div class="card-body">
                     <div>
