@@ -18,7 +18,7 @@
       border-bottom: 1px solid #222222; 
       margin-bottom: 30px; 
     }
-    .logo { height: 45px; object-fit: contain; }
+    .logo-text { font-size: 1.5rem; font-weight: bold; color: #ffffff; text-decoration: none; }
     
     .btn-download {
       background: #2563eb; 
@@ -53,7 +53,6 @@
       gap: 20px; 
     }
     
-    /* TARJETAS CON GRIS MUY OSCURO PARA CONTRASTAR SOBRE NEGRO */
     .card { 
       background: #111111; 
       border-radius: 12px; 
@@ -69,8 +68,7 @@
 <body>
 
   <header>
-    <!-- Si la foto está dentro de la carpeta "imagen", la ruta es imagen/nombre.ext -->
-    <img src="imagen/logo-dehesa3d.png" alt="Dehesa 3D Logo" class="logo">
+    <a href="#" class="logo-text">DEHESA 3D</a>
     <button class="btn-download" onclick="alert('Guardando app en tu dispositivo...')">
       📲 Descargar App
     </button>
@@ -79,41 +77,19 @@
   <section class="hero">
     <h1>Impresión 3D y Llaveros Personalizados</h1>
     <p>Diseño y fabricación a medida con acabado profesional</p>
-    <img src="imagen/mockup-producto.png" alt="Catálogo Dehesa 3D" class="hero-mockup">
+    <!-- Foto en la raíz del repositorio -->
+    <img src="mockup-producto.png" alt="Catálogo Dehesa 3D" class="hero-mockup">
   </section>
 
   <h2 class="gallery-title">Catálogo de Productos</h2>
 
   <main class="grid">
+    <!-- Foto dentro de la carpeta img/ -->
     <div class="card">
-      <img src="imagen/llavero-personalizado-01.webp" alt="Llavero 3D personalizado">
+      <img src="img/silueta-opel.jpg" alt="Silueta Opel Impresa en 3D">
       <div class="card-content">
-        <h3>Llaveros Corporativos</h3>
-        <p>Logos y textos personalizados con relieve multi-color de alta calidad.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imagen/llavero-personalizado-02.webp" alt="Llavero con diseño exclusivo">
-      <div class="card-content">
-        <h3>Llaveros Especiales</h3>
-        <p>Diseños únicos adaptados para eventos, empresas y regalos.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imagen/litofania-con-luz.webp" alt="Litofanía personalizada 3D con luz">
-      <div class="card-content">
-        <h3>Litofanías con Luz</h3>
-        <p>Convierte tus fotografías favoritas en piezas 3D retroiluminadas.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imagen/pieza-tecnica-3d.webp" alt="Pieza técnica impresa en 3D">
-      <div class="card-content">
-        <h3>Piezas Técnicas y Recambios</h3>
-        <p>Prototipado en PLA, PETG y materiales de alta resistencia.</p>
+        <h3>Siluetas y Logos</h3>
+        <p>Diseños personalizados en relieve para automoción y decoración.</p>
       </div>
     </div>
   </main>
