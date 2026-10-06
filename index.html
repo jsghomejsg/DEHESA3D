@@ -1,453 +1,299 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSG 3D Studio | Llaveros & Regalos Personalizados</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #080a0f;
-            --bg-card: #111622;
-            --bg-card-hover: #171f30;
-            --border-glow: rgba(6, 182, 212, 0.3);
-            --border-subtle: rgba(255, 255, 255, 0.07);
-            --cyan-accent: #06b6d4;
-            --cyan-glow: rgba(6, 182, 212, 0.15);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --ws-color: #25d366;
-            --ws-hover: #1eb956;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEHESA 3D | Impresión 3D & Soluciones NFC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-black: #000000;
+      --card-bg: #0d0d0d;
+      --card-border: #1f1f1f;
+      --accent-green: #22c55e;
+      --accent-green-hover: #16a34a;
+      --text-main: #ffffff;
+      --text-muted: #a1a1aa;
+    }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            min-height: 100vh;
-            background-image: 
-                radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 40%);
-            padding-bottom: 60px;
-        }
+    body {
+      background-color: var(--bg-black);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      padding: 24px 16px;
+    }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 8%;
-            border-bottom: 1px solid var(--border-subtle);
-            backdrop-filter: blur(12px);
-            background: rgba(8, 10, 15, 0.85);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+    /* HEADER Y LOGO */
+    header {
+      text-align: center;
+      margin: 20px 0 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        .brand {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-            font-size: 1.3rem;
-            color: #fff;
-        }
+    .logo-wrapper {
+      width: 120px;
+      height: 120px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      border: 4px solid var(--accent-green);
+      box-shadow: 0 0 30px rgba(34, 197, 94, 0.25);
+    }
 
-        .brand span { color: var(--cyan-accent); }
+    /* Logo vectorial del hocico de cerdo exacto */
+    .logo-svg {
+      width: 80px;
+      height: 80px;
+    }
 
-        .status-badge {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(37, 211, 102, 0.1);
-            border: 1px solid rgba(37, 211, 102, 0.3);
-            color: #4ade80;
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.78rem;
-            font-weight: 600;
-        }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-main);
+    }
 
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #25d366;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #25d366;
-            animation: pulse 2s infinite;
-        }
+    .badge {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 6px 14px;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid var(--accent-green);
+      border-radius: 20px;
+      color: var(--accent-green);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
 
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(37, 211, 102, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
+    /* CONTENEDOR PRINCIPAL */
+    main {
+      width: 100%;
+      max-width: 800px;
+    }
 
-        header {
-            text-align: center;
-            padding: 45px 20px 25px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
 
-        .hero-tag {
-            display: inline-block;
-            background: rgba(6, 182, 212, 0.12);
-            border: 1px solid var(--border-glow);
-            color: var(--cyan-accent);
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 6px 16px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
 
-        header h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 12px;
-        }
+    .card:hover {
+      border-color: var(--accent-green);
+      transform: translateY(-2px);
+    }
 
-        header p {
-            color: var(--text-muted);
-            font-size: 1.02rem;
-            line-height: 1.6;
-        }
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      display: block;
+    }
 
-        .container {
-            max-width: 1100px;
-            margin: 25px auto 0;
-            padding: 0 20px;
-        }
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
 
-        .section-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.35rem;
-            font-weight: 700;
-            margin-bottom: 22px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
 
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border-subtle);
-        }
+    /* BOTONES DE ACCIÓN */
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+      max-width: 450px;
+      margin: 0 auto;
+    }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 18px 24px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
 
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
+    .btn-whatsapp {
+      background-color: var(--accent-green);
+      color: #000000;
+    }
 
-        .card:hover {
-            transform: translateY(-6px);
-            border-color: var(--border-glow);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px var(--cyan-glow);
-            background: var(--bg-card-hover);
-        }
+    .btn-whatsapp:hover {
+      background-color: var(--accent-green-hover);
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+    }
 
-        .card-img-container {
-            position: relative;
-            width: 100%;
-            height: 240px;
-            background: #0d111a;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .btn-app {
+      background-color: #141414;
+      color: var(--text-main);
+      border: 1px solid #2e2e2e;
+    }
 
-        .card-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+    .btn-app:hover {
+      background-color: #1f1f1f;
+      border-color: #444444;
+    }
 
-        .card:hover .card-img-container img {
-            transform: scale(1.06);
-        }
+    /* FOOTER */
+    footer {
+      margin-top: auto;
+      padding-top: 40px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
 
-        .badge-category {
-            position: absolute;
-            top: 14px;
-            left: 14px;
-            background: rgba(8, 10, 15, 0.85);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #fff;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 5px 12px;
-            border-radius: 30px;
-            z-index: 2;
-        }
+    /* MODAL TUTORIAL INSTALACIÓN */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(5px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1000;
+    }
 
-        .card-body {
-            padding: 22px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+    .modal-content {
+      background: #111111;
+      border: 1px solid #333333;
+      padding: 24px;
+      border-radius: 20px;
+      max-width: 400px;
+      text-align: center;
+    }
 
-        .card-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        .card-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.55;
-            margin-bottom: 18px;
-        }
-
-        .specs-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .spec-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-subtle);
-            color: #cbd5e1;
-            font-size: 0.75rem;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-weight: 500;
-        }
-
-        .btn-ws {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: var(--ws-color);
-            color: #fff;
-            text-decoration: none;
-            padding: 13px 18px;
-            border-radius: 12px;
-            font-size: 0.92rem;
-            font-weight: 700;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
-        }
-
-        .btn-ws:hover {
-            background: var(--ws-hover);
-            transform: scale(1.02);
-        }
-
-        .btn-ws svg {
-            width: 19px;
-            height: 19px;
-            fill: currentColor;
-        }
-
-        .b2b-banner {
-            margin-top: 45px;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.12) 0%, rgba(17, 22, 34, 0.9) 100%);
-            border: 1px solid var(--border-glow);
-            border-radius: 20px;
-            padding: 35px 25px;
-            text-align: center;
-        }
-
-        .b2b-banner h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        .b2b-banner p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            max-width: 550px;
-            margin: 0 auto 22px;
-            line-height: 1.55;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 0.82rem;
-            color: #475569;
-            border-top: 1px solid var(--border-subtle);
-            padding-top: 22px;
-        }
-
-        @media (max-width: 600px) {
-            header h1 { font-size: 2rem; }
-            nav { padding: 14px 5%; }
-        }
-    </style>
+    .modal-content h3 { margin-bottom: 12px; color: var(--accent-green); }
+    .modal-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; text-align: left; line-height: 1.5; }
+    .close-btn {
+      background: var(--accent-green);
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav>
-        <div class="brand">
-            <span>JSG</span> 3D STUDIO
-        </div>
-        <div class="status-badge">
-            <div class="pulse-dot"></div>
-            Aceptando Encargos
-        </div>
-    </nav>
+  <header>
+    <div class="logo-wrapper">
+      <!-- Icono SVG nítido del hocico de cerdo -->
+      <svg class="logo-svg" viewBox="0 0 100 100">
+        <!-- Contorno exterior del hocico -->
+        <path d="M 50 15 C 22 15 10 32 10 52 C 10 72 22 85 50 85 C 78 85 90 72 90 52 C 90 32 78 15 50 15 Z" fill="#000000"/>
+        <!-- Narinas / Orificios -->
+        <ellipse cx="36" cy="52" rx="9" ry="16" fill="#ffffff" transform="rotate(-12 36 52)"/>
+        <ellipse cx="64" cy="52" rx="9" ry="16" fill="#ffffff" transform="rotate(12 64 52)"/>
+      </svg>
+    </div>
+    <h1>DEHESA 3D</h1>
+    <span class="badge">Impresión 3D & Tecnología NFC</span>
+  </header>
 
-    <!-- HERO HEADER -->
-    <header>
-        <div class="hero-tag">🔑 Llaveros & Detalles en 3D</div>
-        <h1>Catálogo de Diseños</h1>
-        <p>Llaveros corporativos B2B para negocios locales, regalos personalizados y piezas a medida.</p>
-    </header>
+  <main>
+    <div class="grid">
+      <div class="card">
+        <span class="card-icon">🔑</span>
+        <h3>Llaveros NFC</h3>
+        <p>Llaveros de alta resistencia con chip NFC totalmente sellado e impermeable. Ideales para empresas y regalos inteligentes.</p>
+      </div>
 
-    <!-- CONTAINER -->
-    <div class="container">
-        
-        <div class="section-title">Diseños Disponibles</div>
+      <div class="card">
+        <span class="card-icon">🛡️</span>
+        <h3>Pulseras Infantil NFC</h3>
+        <p>Seguridad y tranquilidad para los niños en TPU flexible. Datos de contacto legibles al instante con cualquier smartphone.</p>
+      </div>
 
-        <div class="grid">
-            
-            <!-- TARJETA 1: SILUETA OPEL ASTRA -->
-            <div class="card">
-                <div class="card-img-container">
-                    <span class="badge-category" style="color: #a855f7;">🚗 Motor & Deco</span>
-                    <!-- BÚSQUEDA AUTOMÁTICA DE LA FOTO EN CUALQUIER RUTA -->
-                    <img src="img/silueta-opel.jpg" 
-                         alt="Silueta Opel Astra ST 3D"
-                         onerror="
-                           if (!this.dataset.step) {
-                             this.dataset.step = '1';
-                             this.src = 'imagen/silueta-opel.jpg';
-                           } else if (this.dataset.step === '1') {
-                             this.dataset.step = '2';
-                             this.src = 'silueta-opel.jpg';
-                           } else if (this.dataset.step === '2') {
-                             this.dataset.step = '3';
-                             this.src = 'img/silueta-opel.jfif';
-                           } else if (this.dataset.step === '3') {
-                             this.dataset.step = '4';
-                             this.src = 'imagen/silueta-opel.jfif';
-                           }
-                         ">
-                </div>
-                <div class="card-body">
-                    <div>
-                        <h3 class="card-title">Silueta Coche / Moto 3D</h3>
-                        <p class="card-desc">
-                            Corte de precisión con peana de exhibición para escritorio o estantería. Personalizable con cualquier modelo de coche o moto.
-                        </p>
-                        <div class="specs-list">
-                            <span class="spec-item">Hasta 20 cm</span>
-                            <span class="spec-item">Con Peana</span>
-                            <span class="spec-item">Cualquier Modelo</span>
-                        </div>
-                    </div>
-                    <a href="https://wa.me/34611801528?text=Hola,%20quiero%20consultar%20una%20silueta%203D%20personalizada" target="_blank" class="btn-ws">
-                        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                        Pedir Silueta por WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- TARJETA 2: LLAVEROS B2B -->
-            <div class="card">
-                <div class="card-img-container">
-                    <span class="badge-category" style="color: #38bdf8;">🏢 B2B & Empresa</span>
-                    <img src="img/llavero-b2b.jpg" alt="Llaveros B2B Multi-Color" onerror="this.style.display='none'">
-                </div>
-                <div class="card-body">
-                    <div>
-                        <h3 class="card-title">Llaveros B2B con Logo & QR</h3>
-                        <p class="card-desc">
-                            Lotes corporativos para comercios y eventos. Tu logo en relieve por delante y código QR o teléfono en el reverso.
-                        </p>
-                        <div class="specs-list">
-                            <span class="spec-item">Hasta 4 colores</span>
-                            <span class="spec-item">QR Integrado</span>
-                            <span class="spec-item">Lotes 20 - 200 uds</span>
-                        </div>
-                    </div>
-                    <a href="https://wa.me/34611801528?text=Hola,%20quiero%20informaci%C3%B3n%20para%20un%20lote%20de%20llaveros%20B2B%20para%20mi%20negocio" target="_blank" class="btn-ws">
-                        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                        Pedir Presupuesto B2B
-                    </a>
-                </div>
-            </div>
-
-            <!-- TARJETA 3: REGALOS PERSONALIZADOS -->
-            <div class="card">
-                <div class="card-img-container">
-                    <span class="badge-category" style="color: #ec4899;">🎁 Regalos Únicos</span>
-                    <img src="img/regalo-personalizado.jpg" alt="Regalos Personalizados 3D" onerror="this.style.display='none'">
-                </div>
-                <div class="card-body">
-                    <div>
-                        <h3 class="card-title">Regalos & Nombres en 3D</h3>
-                        <p class="card-desc">
-                            Llaveros personalizados con nombres, iniciales, matrículas o detalles exclusivos para regalar en fechas especiales.
-                        </p>
-                        <div class="specs-list">
-                            <span class="spec-item">Nombres / Iniciales</span>
-                            <span class="spec-item">Colores a Elegir</span>
-                            <span class="spec-item">Desde 1 unidad</span>
-                        </div>
-                    </div>
-                    <a href="https://wa.me/34611801528?text=Hola,%20me%20gustar%C3%ADa%20encargar%20un%20regalo%20o%20llavero%20personalizado" target="_blank" class="btn-ws">
-                        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                        Pedir Regalo por WhatsApp
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- B2B BANNER -->
-        <div class="b2b-banner">
-            <h2>¿Quieres un diseño o regalo a medida?</h2>
-            <p>Cuéntame tu idea o envíame tu logo por WhatsApp y te preparo un boceto digital sin compromiso.</p>
-            <a href="https://wa.me/34611801528?text=Hola,%20tengo%20una%20idea%20para%20un%20dise%C3%B1o%20o%20regalo%20personalizado" target="_blank" class="btn-ws" style="display: inline-flex; width: auto; font-size: 1rem; padding: 15px 28px;">
-                Escribir por WhatsApp
-            </a>
-        </div>
-
-        <footer>
-            © JSG 3D Studio — Pozoblanco (Córdoba)
-        </footer>
-
+      <div class="card">
+        <span class="card-icon">⚙️</span>
+        <h3>Impresión Bajo Pedido</h3>
+        <p>Prototipado rápido, sustitución de piezas y diseños personalizados fabricados con precisión profesional.</p>
+      </div>
     </div>
 
+    <div class="cta-group">
+      <a href="https://wa.me/34611801528?text=Hola,%20me%20interesa%20información%20sobre%20los%20productos%20de%20DEHESA%203D" class="btn btn-whatsapp" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        Pedir por WhatsApp
+      </a>
+
+      <button class="btn btn-app" onclick="openAppModal()">
+        📲 Guardar como App en el móvil
+      </button>
+    </div>
+  </main>
+
+  <footer>
+    &copy; DEHESA 3D — Pozoblanco, Valle de los Pedroches
+  </footer>
+
+  <!-- Modal Tutorial de Instalación -->
+  <div class="modal" id="appModal">
+    <div class="modal-content">
+      <h3>Instalar DEHESA 3D</h3>
+      <p>
+        <strong>En Android (Chrome):</strong><br>
+        Pulsa los 3 puntos de la esquina superior derecha y selecciona <em>"Añadir a la pantalla de inicio"</em> o <em>"Instalar aplicación"</em>.<br><br>
+        <strong>En iPhone (Safari):</strong><br>
+        Pulsa el botón <em>Compartir</em> (el icono del cuadrado con la flecha) y selecciona <em>"Añadir a la pantalla de inicio"</em>.
+      </p>
+      <button class="close-btn" onclick="closeAppModal()">Entendido</button>
+    </div>
+  </div>
+
+  <script>
+    function openAppModal() {
+      document.getElementById('appModal').style.display = 'flex';
+    }
+    function closeAppModal() {
+      document.getElementById('appModal').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
