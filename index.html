@@ -17,7 +17,7 @@
     
     .container { max-width: 1100px; margin: 0 auto; }
 
-    /* CABECERA (SIN BOTÓN APP) */
+    /* CABECERA */
     header { 
       display: flex; 
       justify-content: center; 
@@ -38,18 +38,18 @@
     .hero { text-align: center; margin-bottom: 45px; }
     .hero h1 { font-size: 2.2rem; margin-bottom: 8px; font-weight: 800; color: #ffffff; }
     .hero p { color: #a1a1aa; font-size: 1.1rem; max-width: 600px; margin: 0 auto 25px auto; }
-    .hero-img-container { display: flex; justify-content: center; align-items: center; }
-    .hero-mockup { 
+    .hero-img-container { display: flex; justify-content: center; align-items: center; margin-top: 15px; }
+    
+    /* ESTILO PARA EL LOGO DEL HOCICO */
+    .hero-logo { 
       width: 100%; 
-      max-width: 380px; 
-      max-height: 250px;
+      max-width: 220px; 
+      height: auto;
       object-fit: contain;
-      border-radius: 16px; 
-      padding: 15px;
-      background: #111113;
-      border: 1px solid #27272a;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8); 
+      filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.7)); 
+      transition: transform 0.3s ease;
     }
+    .hero-logo:hover { transform: scale(1.03); }
 
     /* GALERÍA DE PRODUCTOS */
     .gallery-title { 
@@ -144,8 +144,8 @@
       <h1>Impresión 3D y Llaveros</h1>
       <p>Diseño y fabricación personalizada de alta calidad</p>
       <div class="hero-img-container">
-        <!-- Carga tu logo o imagen principal -->
-        <img src="img/logo-dehesa3d.png" alt="Dehesa 3D Logo" class="hero-mockup" onerror="this.src='mockup-producto.png'">
+        <!-- MUESTRA EL LOGO DEL HOCICO -->
+        <img src="img/logo.png" alt="Dehesa 3D Logo" class="hero-logo" onerror="this.src='img/logo-dehesa3d.png'">
       </div>
     </section>
 
@@ -169,7 +169,6 @@
     const folder = 'img';
     const phone = '34611801528';
 
-    // Función para asignar títulos personalizados sin referencias específicas a marcas
     function getProductTitle(filename) {
       const name = filename.toLowerCase();
       if (name.includes('silueta') || name.includes('opel') || name.includes('coche')) {
@@ -181,7 +180,6 @@
         .replace(/\b\w/g, l => l.toUpperCase());
     }
 
-    // Función para asignar descripciones automáticamente segun el producto
     function getProductDescription(filename) {
       const name = filename.toLowerCase();
       if (name.includes('pulsera')) {
@@ -201,7 +199,8 @@
         const response = await fetch(`https://api.github.com/repos/${user}/${repo}/contents/${folder}`);
         const files = await response.json();
         
-        const images = files.filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f.name));
+        // Excluye la imagen del logo del catálogo dinámico de productos
+        const images = files.filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f.name) && !f.name.toLowerCase().includes('logo'));
         
         if (images.length === 0) {
           gallery.innerHTML = '<p style="color: #a1a1aa;">Sube tus fotos a la carpeta img para verlas aquí.</p>';
