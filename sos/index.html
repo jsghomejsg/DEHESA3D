@@ -107,7 +107,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     const id = (urlParams.get('id') || 'P01').toUpperCase();
 
-    // Conexión con tu Google Sheet mediante OpenSheet
+    // ID de tu Google Sheet
     const sheetID = '1edWkhsyDjxSbNGrBzICfaVEpB2AoP3iIb35PtEjrFiI';
 
     async function fetchSheetData() {
@@ -127,11 +127,11 @@
       const rows = await fetchSheetData();
       
       if (!rows) {
-        app.innerHTML = `<div class="loading" style="color:#ef4444;">Error al conectar con los datos. Verifica el acceso público de la hoja.</div>`;
+        app.innerHTML = `<div class="loading" style="color:#ef4444;">Error al conectar con los datos de Google Sheets.</div>`;
         return;
       }
 
-      // Buscar la fila correspondiente al ID de la pulsera
+      // Buscar la fila por el código ID de la pulsera
       const data = rows.find(r => r.ID && r.ID.toString().trim().toUpperCase() === id);
 
       if (!data) {
@@ -139,7 +139,7 @@
         return;
       }
 
-      // Crear botones de teléfono dinámicamente si tienen datos
+      // Crear botones de teléfono de forma dinámica si la casilla tiene datos
       let phonesHTML = '';
       if (data.Tel1) phonesHTML += `<a href="tel:${data.Tel1}" class="btn-call">📞 Llamar a ${data.Contacto1 || 'Contacto 1'}</a>`;
       if (data.Tel2) phonesHTML += `<a href="tel:${data.Tel2}" class="btn-call c2">📞 Llamar a ${data.Contacto2 || 'Contacto 2'}</a>`;
@@ -164,10 +164,10 @@
           </div>
         ` : ''}
 
-        ${data.Direccion ? `
+        ${data.Notas ? `
           <div class="info-box">
-            <div class="info-title" style="color: #38bdf8;">🏠 Dirección / Notas</div>
-            <div class="info-text">${data.Direccion}</div>
+            <div class="info-title" style="color: #38bdf8;">📌 Información Adicional / Notas</div>
+            <div class="info-text">${data.Notas}</div>
           </div>
         ` : ''}
 
